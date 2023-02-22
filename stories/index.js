@@ -10,6 +10,7 @@ import DayListItem from "components/DayListItem.jsx";
 import DayList from "components/DayList.jsx";
 import InterviewerListItem from "components/InterviewerListItem.jsx";
 import InterviewerList from "components/InterviewerList.jsx";
+import Appointment from "components/Appointment/index.js";
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -150,6 +151,22 @@ storiesOf("InterviewerList", module)
       onChange={action("setInterviewer")}
     />
   ));
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+// Initial Appointment Testing
+storiesOf('Appointment', module)
+  .addParameters({
+    backgrounds: [{ name: "white", value: "#fff", default: true }]
+  })
+  .add("Appointment", () => <Appointment />)
+  .add('Appointment With Time', () => (
+    <Appointment
+      time={'12pm'}
+    />
+  ));
+
 
 
 ////////////////////////////////////////////////////////////////////////////////
