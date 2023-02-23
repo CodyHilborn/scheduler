@@ -11,6 +11,7 @@ import DayList from "components/DayList.jsx";
 import InterviewerListItem from "components/InterviewerListItem.jsx";
 import InterviewerList from "components/InterviewerList.jsx";
 import Appointment from "components/Appointment/index.js";
+import Header from "components/Appointment/Header.jsx";
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -165,8 +166,11 @@ storiesOf('Appointment', module)
     <Appointment
       time={'12pm'}
     />
-  ));
+  ))
+  // *** Header Testing ***
+  .add('Header', () => <Header time={'12pm'} />)
 
 
 
 ////////////////////////////////////////////////////////////////////////////////
+
