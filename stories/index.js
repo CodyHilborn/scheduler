@@ -15,6 +15,8 @@ import Header from "components/Appointment/Header.jsx";
 import Empty from "components/Appointment/Empty.jsx";
 import Show from "components/Appointment/Show.jsx";
 import Confirm from "components/Appointment/Confirm.jsx";
+import Status from "components/Appointment/Status.jsx";
+import Error from "components/Appointment/Error.jsx";
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -190,7 +192,16 @@ storiesOf('Appointment', module)
       onConfirm={action('onConfirm')}
       onCancel={action('onCancel')}
     />
-  ));
+  ))
+  // *** Status Testing ***
+  .add('Status', () => <Status message="Deleting" />)
+  // *** Error Testing ***
+  .add('Error', () => (
+    <Error
+      message={'Could not delete appointment.'}
+      onClose={action('onClose')}
+    />
+  ))
 
 
 ////////////////////////////////////////////////////////////////////////////////
