@@ -13,6 +13,8 @@ import InterviewerList from "components/InterviewerList.jsx";
 import Appointment from "components/Appointment/index.js";
 import Header from "components/Appointment/Header.jsx";
 import Empty from "components/Appointment/Empty.jsx";
+import Show from "components/Appointment/Show.jsx";
+import Confirm from "components/Appointment/Confirm.jsx";
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -170,8 +172,25 @@ storiesOf('Appointment', module)
   ))
   // *** Header Testing ***
   .add('Header', () => <Header time={'12pm'} />)
-  .add('Empty', () => <Empty onAdd={action('onAdd')} />);
-
+  // *** Empty Testing ***
+  .add('Empty', () => <Empty onAdd={action('onAdd')} />)
+  // *** Show Testing ***
+  .add('Show', () => (
+    <Show
+      student={'Cody Hilborn'}
+      interviewer={interviewer}
+      onEdit={action('onEdit')}
+      onDelete={action('onDelete')}
+    />
+  ))
+  // *** Confirm Testing ***
+  .add('Confirm', () => (
+    <Confirm
+      message={'Delete the appointment?'}
+      onConfirm={action('onConfirm')}
+      onCancel={action('onCancel')}
+    />
+  ));
 
 
 ////////////////////////////////////////////////////////////////////////////////
