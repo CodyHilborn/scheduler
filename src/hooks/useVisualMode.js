@@ -1,7 +1,11 @@
 import { useState } from "react";
 
+////////////////////////////////////////////////////////////////////////////////
+//                      CUSTOM HOOK - USE VISUAL MODE
+////////////////////////////////////////////////////////////////////////////////
 
 export default function useVisualMode(initial) {
+  // DECLARE MODE STATE, HISTORY TO TRACK STATES HISTORY
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
 
@@ -18,6 +22,7 @@ export default function useVisualMode(initial) {
     setMode(newMode);
   };
 
+
   const back = () => {
     if (history.length > 1) {
       setHistory(prev => {
@@ -27,11 +32,13 @@ export default function useVisualMode(initial) {
     }
   };
 
-  console.log(history, mode);
-
+  // RETURN MODE STATE & BOTH FUNCTIONS IN OBJECT
   return {
     mode,
     transition,
     back
   };
 }
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////

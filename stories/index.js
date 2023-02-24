@@ -20,41 +20,13 @@ import Error from "components/Appointment/Error.jsx";
 import Form from "components/Appointment/Form.jsx";
 
 ////////////////////////////////////////////////////////////////////////////////
-
-// Button Testing
-storiesOf("Button", module)
-  .addParameters({
-    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-  })
-  .add("Base", () => <Button>Base</Button>)
-  .add("Confirm", () => <Button confirm>Confirm</Button>)
-  .add("Danger", () => <Button danger>Cancel</Button>)
-  .add("Clickable", () => (
-    <Button onClick={action("button-clicked")}>Clickable</Button>
-  ))
-  .add("Disabled", () => (
-    <Button disabled onClick={action("button-clicked")}>
-      Disabled
-    </Button>
-  ));
-
+//                     *** STORYBOOK TESTING ***
 ////////////////////////////////////////////////////////////////////////////////
 
-// Day List Item Testing
-storiesOf("DayListItem", module)
-  .addParameters({
-    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-  })
-  .add("Unselected", () => <DayListItem name="Monday" spots={5} />)
-  .add("Selected", () => <DayListItem name="Monday" spots={5} selected />)
-  .add("Full", () => <DayListItem name="Monday" spots={0} />)
-  .add("Clickable", () => (
-    <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} />
-  ));
-
+////////////////////////////////////////////////////////////////////////////////
+// Mock Data
 ////////////////////////////////////////////////////////////////////////////////
 
-// Day List Testing
 const days = [
   {
     id: 1,
@@ -73,6 +45,58 @@ const days = [
   },
 ];
 
+
+const interviewer = {
+  id: 1,
+  name: "Sylvia Palmer",
+  avatar: "https://i.imgur.com/LpaY82x.png"
+};
+
+const interviewers = [
+  { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
+  { id: 2, name: "Tori Malcolm", avatar: "https://i.imgur.com/Nmx0Qxo.png" },
+  { id: 3, name: "Mildred Nazir", avatar: "https://i.imgur.com/T2WwVfS.png" },
+  { id: 4, name: "Cohana Roy", avatar: "https://i.imgur.com/FK8V841.jpg" },
+  { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
+];
+
+////////////////////////////////////////////////////////////////////////////////
+// Button Testing
+////////////////////////////////////////////////////////////////////////////////
+storiesOf("Button", module)
+  .addParameters({
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
+  })
+  .add("Base", () => <Button>Base</Button>)
+  .add("Confirm", () => <Button confirm>Confirm</Button>)
+  .add("Danger", () => <Button danger>Cancel</Button>)
+  .add("Clickable", () => (
+    <Button onClick={action("button-clicked")}>Clickable</Button>
+  ))
+  .add("Disabled", () => (
+    <Button disabled onClick={action("button-clicked")}>
+      Disabled
+    </Button>
+  ));
+
+////////////////////////////////////////////////////////////////////////////////
+// Day List Item Testing
+////////////////////////////////////////////////////////////////////////////////
+storiesOf("DayListItem", module)
+  .addParameters({
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
+  })
+  .add("Unselected", () => <DayListItem name="Monday" spots={5} />)
+  .add("Selected", () => <DayListItem name="Monday" spots={5} selected />)
+  .add("Full", () => <DayListItem name="Monday" spots={0} />)
+  .add("Clickable", () => (
+    <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} />
+  ));
+
+////////////////////////////////////////////////////////////////////////////////
+// Day List Testing
+////////////////////////////////////////////////////////////////////////////////
+
 storiesOf("DayList", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
@@ -89,13 +113,8 @@ storiesOf("DayList", module)
 
 
 ////////////////////////////////////////////////////////////////////////////////
-
 // Interviewer List Item Testing
-const interviewer = {
-  id: 1,
-  name: "Sylvia Palmer",
-  avatar: "https://i.imgur.com/LpaY82x.png"
-};
+////////////////////////////////////////////////////////////////////////////////
 
 storiesOf("InterviewerListItem", module)
   .addParameters({
@@ -126,16 +145,8 @@ storiesOf("InterviewerListItem", module)
 
 
 ////////////////////////////////////////////////////////////////////////////////
-
-
 // Interviewer List Testing
-const interviewers = [
-  { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
-  { id: 2, name: "Tori Malcolm", avatar: "https://i.imgur.com/Nmx0Qxo.png" },
-  { id: 3, name: "Mildred Nazir", avatar: "https://i.imgur.com/T2WwVfS.png" },
-  { id: 4, name: "Cohana Roy", avatar: "https://i.imgur.com/FK8V841.jpg" },
-  { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
-];
+////////////////////////////////////////////////////////////////////////////////
 
 storiesOf("InterviewerList", module)
   .addParameters({
@@ -161,8 +172,9 @@ storiesOf("InterviewerList", module)
 
 
 ////////////////////////////////////////////////////////////////////////////////
-
 // Appointment Testing
+////////////////////////////////////////////////////////////////////////////////
+
 storiesOf('Appointment', module)
   .addParameters({
     backgrounds: [{ name: "white", value: "#fff", default: true }]
@@ -235,8 +247,7 @@ storiesOf('Appointment', module)
       />
       <Appointment time="5pm" />
     </Fragment>
-  ))
-
+  ));
 
 ////////////////////////////////////////////////////////////////////////////////
-
+////////////////////////////////////////////////////////////////////////////////

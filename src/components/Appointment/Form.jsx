@@ -2,21 +2,30 @@ import React, { useState } from "react";
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
+////////////////////////////////////////////////////////////////////////
+//            APPOINTMENT COMPONENT - FORM
+////////////////////////////////////////////////////////////////////////
+
 export default function Form(props) {
 
+  // DECLARE FORM STATE FOR STUDENT AND INTERVIEWER
   const [student, setStudent] = useState(props.student || '');
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
 
+  // RESETS STATE BACK TO DEFAULT
   const reset = () => {
     setStudent('');
     setInterviewer(null);
   };
 
+  // CALL RESET & CANCEL EVENT HANDLER
   const cancel = () => {
     reset();
     props.onCancel();
   };
 
+
+  // RENDER HTML
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
@@ -45,3 +54,6 @@ export default function Form(props) {
     </main>
   );
 }
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
