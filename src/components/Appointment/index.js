@@ -20,6 +20,7 @@ export default function Appointment(props) {
 	const SAVING = "SAVING";
 	const DELETING = "DELETING";
 	const CONFIRM = "CONFIRM";
+	const EDIT = "EDIT";
 
 	// DESTRUCT useVisualMode FUNCTION:
 	// mode = state, transition(newMode, replace = false), back()
@@ -59,6 +60,7 @@ export default function Appointment(props) {
 					student={props.interview.student}
 					interviewer={props.interview.interviewer}
 					onDelete={() => transition(CONFIRM)}
+					onEdit={() => transition(EDIT)}
 				/>
 			)}
 			{mode === CREATE && (
@@ -77,6 +79,15 @@ export default function Appointment(props) {
 				/>
 			)}
 			{mode === DELETING && <Status message={"Deleting"} />}
+			{mode === EDIT && (
+				<Form
+					student={props.interview.student}
+					interviewer={props.interview.interviewer.id}
+					interviewers={props.interviewers}
+					onSave={save}
+					onCancel={() => back()}
+				/>
+			)}
 		</article>
 	);
 }
