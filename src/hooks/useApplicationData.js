@@ -32,8 +32,8 @@ export default function useApplicationData() {
 		});
 	}, []);
 
-  // Update Spots -- Pass in appointment ID + updated appointments object 
-  // from book & cancel functions
+	// Update Spots -- Pass in appointment ID + updated appointments object
+	// from book & cancel functions
 	const updateSpots = (id, appointments) => {
 		return state.days.map((day) => {
 			// Return new days array, only update day containing appointment id.
@@ -46,13 +46,13 @@ export default function useApplicationData() {
 						numOfSpots++;
 					}
 				});
-        // Add updated day to array.
+				// Add updated day to array.
 				return {
 					...day,
 					spots: numOfSpots,
 				};
 			}
-      // Add non-updated day to array.
+			// Add non-updated day to array.
 			return day;
 		});
 	};
