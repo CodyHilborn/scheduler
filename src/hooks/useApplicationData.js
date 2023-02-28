@@ -32,6 +32,31 @@ export default function useApplicationData() {
 		});
 	}, []);
 
+  // Update Spots -- Pass in appointment ID + updated appointments object 
+  // from book & cancel functions
+	const updateSpots = (id, appointments) => {
+		return state.days.map((day) => {
+			// Return new days array, only update day containing appointment id.
+			if (day.appointments.includes(id)) {
+				let numOfSpots = 0;
+
+				day.appointments.forEach((appointmentId) => {
+					// If interview is set to null, add to spots counter.
+					if (!appointments[appointmentId].interview) {
+						numOfSpots++;
+					}
+				});
+        // Add updated day to array.
+				return {
+					...day,
+					spots: numOfSpots,
+				};
+			}
+      // Add non-updated day to array.
+			return day;
+		});
+	};
+
 	// BOOK INTERVIEW FUNCTION
 	const bookInterview = async (id, interview) => {
 		const appointment = {
@@ -43,16 +68,19 @@ export default function useApplicationData() {
 			[id]: appointment,
 		};
 
-		return axios.put(`/api/appointments/${id}`, { interview }).then(() =>
+		const days = updateSpots(id, appointments);
+
+		return axios.put(`/api/appointments/${id}`, { interview }).then(() => {
 			setState({
 				...state,
 				appointments,
-			})
-		);
+				days,
+			});
+		});
 	};
 
 	// CANCEL INTERVIEW FUNCTION
-	const cancelInterview = (id) => {
+	const cancelInterview = async (id) => {
 		const appointment = {
 			...state.appointments[id],
 			interview: null,
@@ -62,10 +90,13 @@ export default function useApplicationData() {
 			[id]: appointment,
 		};
 
+		const days = updateSpots(id, appointments);
+
 		return axios.delete(`/api/appointments/${id}`).then(() =>
 			setState({
 				...state,
 				appointments,
+				days,
 			})
 		);
 	};
