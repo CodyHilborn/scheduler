@@ -35,8 +35,8 @@ export default function useApplicationData() {
 	// Update Spots -- Pass in appointment ID + updated appointments object
 	// from book & cancel functions
 	const updateSpots = (id, appointments) => {
-		return state.days.map((day) => {
-			// Return new days array, only update day containing appointment id.
+		// Return new days array, only update day containing the appointment id.
+		const updatedDays = state.days.map((day) => {
 			if (day.appointments.includes(id)) {
 				let numOfSpots = 0;
 
@@ -55,6 +55,7 @@ export default function useApplicationData() {
 			// Add non-updated day to array.
 			return day;
 		});
+		return updatedDays;
 	};
 
 	// BOOK INTERVIEW FUNCTION
