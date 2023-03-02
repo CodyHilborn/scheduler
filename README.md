@@ -20,5 +20,5 @@ npm start
 
 ## Screenshots
 
-!["Main Page"]()
-!["Edit Mode"]()
+!["Main Page"](https://github.com/CodyHilborn/scheduler/blob/master/docs/main-page.png?raw=true)
+!["Edit Mode"](https://github.com/CodyHilborn/scheduler/blob/master/docs/edit-mode.png?raw=true)
