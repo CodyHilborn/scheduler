@@ -16,7 +16,6 @@ export default function useApplicationData() {
 	const setDay = (day) => setState({ ...state, day });
 
 	// API CALL FOR DATA
-	// EMPTY DEPENDENCY ARRAY = CALL ONLY MADE ON FIRST RENDER, NO DEATH LOOP
 	useEffect(() => {
 		Promise.all([
 			axios.get("/api/days"),
@@ -41,7 +40,6 @@ export default function useApplicationData() {
 				let numOfSpots = 0;
 
 				day.appointments.forEach((appointmentId) => {
-					// If interview is set to null, add to spots counter.
 					if (!appointments[appointmentId].interview) {
 						numOfSpots++;
 					}
@@ -102,7 +100,7 @@ export default function useApplicationData() {
 		);
 	};
 
-	// Functions/State to return to main Application component
+	// Functions/State to return to Application
 	return {
 		state,
 		setDay,

@@ -5,7 +5,7 @@ import { useState } from "react";
 ////////////////////////////////////////////////////////////////////////////////
 
 export default function useVisualMode(initial) {
-  // DECLARE MODE STATE, HISTORY TO TRACK STATES HISTORY
+
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
 
@@ -32,7 +32,6 @@ export default function useVisualMode(initial) {
     }
   };
 
-  // RETURN MODE STATE & BOTH FUNCTIONS IN OBJECT
   return {
     mode,
     transition,

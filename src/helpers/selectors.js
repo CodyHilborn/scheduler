@@ -1,7 +1,12 @@
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 
-// Search state.days arr for day matching name, returns new array with appointment data
+/**
+ * 
+ * @param {object} state 
+ * @param {string} day 
+ * @returns Array with appointment data for specific day
+ */
 export function getAppointmentsForDay(state, day) {
   const found = state.days.find(d => day === d.name);
 
@@ -16,7 +21,13 @@ export function getAppointmentsForDay(state, day) {
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 
-// If interview is booked, replace interviewer id with full interviewer data
+/**
+ * 
+ * @param {object} state 
+ * @param {object} interview 
+ * @returns object w/ updated interviewer data
+ */
+
 export function getInterview(state, interview) {
 
   if (interview === null) {
@@ -34,7 +45,12 @@ export function getInterview(state, interview) {
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 
-// Search state.days array for day matching name, return new array w/ interviewer data
+/**
+ * 
+ * @param {object} state 
+ * @param {string} day 
+ * @returns Array w/ available interviewers for specific day
+ */
 export function getInterviewersForDay(state, day) {
   const found = state.days.find(d => day === d.name);
 
