@@ -2,64 +2,63 @@
 ////////////////////////////////////////////////////////////////////////
 
 /**
- * 
- * @param {object} state 
- * @param {string} day 
+ *
+ * @param {object} state
+ * @param {string} day
  * @returns Array with appointment data for specific day
  */
+
 export function getAppointmentsForDay(state, day) {
-  const found = state.days.find(d => day === d.name);
+	const found = state.days.find((d) => day === d.name);
 
-  if (state.days.length === 0 || found === undefined) {
-    return [];
-  }
+	if (state.days.length === 0 || !found) {
+		return [];
+	}
 
-  return found.appointments.map(id => state.appointments[id]);
+	return found.appointments.map((id) => state.appointments[id]);
 }
-
 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 
 /**
- * 
- * @param {object} state 
- * @param {object} interview 
+ *
+ * @param {object} state
+ * @param {object} interview
  * @returns object w/ updated interviewer data
  */
 
 export function getInterview(state, interview) {
+	if (!interview) {
+		return null;
+	}
 
-  if (interview === null) {
-    return null;
-  }
+	const output = {
+		student: interview.student,
+		interviewer: state.interviewers[interview.interviewer],
+	};
 
-  const output = {
-    student: interview.student,
-    interviewer: state.interviewers[interview.interviewer]
-  };
-
-  return output;
+	return output;
 }
 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 
 /**
- * 
- * @param {object} state 
- * @param {string} day 
+ *
+ * @param {object} state
+ * @param {string} day
  * @returns Array w/ available interviewers for specific day
  */
+
 export function getInterviewersForDay(state, day) {
-  const found = state.days.find(d => day === d.name);
+	const found = state.days.find((d) => day === d.name);
 
-  if (state.days.length === 0 || found === undefined) {
-    return [];
-  }
+	if (state.days.length === 0 || !found) {
+		return [];
+	}
 
-  return found.interviewers.map(id => state.interviewers[id]);
+	return found.interviewers.map((id) => state.interviewers[id]);
 }
-
 
 /////////////////////////////////////////////////////////////////////
